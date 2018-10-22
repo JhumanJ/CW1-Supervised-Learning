@@ -48,7 +48,8 @@ for k in [2, 5, 10, 14, 18]:
     calculatedPoints = []
     for x in [i*0.01 for i in range(100)]:
         calculatedPoints.append( (x,calcValue(regressor.W,x)) )
-    plt.plot([x for (x,y) in calculatedPoints],[y for (x,y) in calculatedPoints], colors[colorIndex],label="pl")
+    plt.plot([x for (x,y) in calculatedPoints],[y for (x,y) in calculatedPoints], colors[colorIndex],label="k="+str(k))
+    print("k = "+str(k)+" -> color = "+colors[colorIndex])
     colorIndex+=1
 
 
