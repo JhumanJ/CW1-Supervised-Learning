@@ -42,6 +42,7 @@ for k in range(1,5):
     plt.plot([x for (x,y) in calculatedPoints],[y for (x,y) in calculatedPoints], colors[k-1])
     print("k = "+str(k)+" -> color = "+colors[k-1])
 
+#
 
 plt.show()
 

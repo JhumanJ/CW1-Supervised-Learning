@@ -1,5 +1,6 @@
 import numpy as np
 
+# Gives regression method utilities for a given k and set of points
 class KPolynomialRegression:
 
     def __init__(self,points,k):

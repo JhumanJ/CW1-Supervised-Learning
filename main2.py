@@ -52,7 +52,12 @@ for k in [2, 5, 10, 14, 18]:
     print("k = "+str(k)+" -> color = "+colors[colorIndex])
     colorIndex+=1
 
-
+# Create thousand of test points
+T = []
+for index in range(1,1000):
+    x = np.random.uniform(0,1)
+    y = float((math.sin(2*math.pi*x))**2) + np.random.normal(0,0.07)
+    T.append((x,y))
 
 plt.show()
 
