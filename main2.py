@@ -51,8 +51,15 @@ for k in [2, 5, 10, 14, 18]:
     plt.plot([x for (x,y) in calculatedPoints],[y for (x,y) in calculatedPoints], colors[colorIndex],label="k="+str(k))
     print("k = "+str(k)+" -> color = "+colors[colorIndex])
     colorIndex+=1
+plt.show()
+plt.close()
 
-
+for k in range(1,18):
+    regressor = KPolynomialRegression(points,k)
+    regressor.regress()
+    x = k
+    y = math.log10(regressor.getMSE())
+    plt.plot(x,y, colors[colorIndex],label="k="+str(k))
 
 plt.show()
 
