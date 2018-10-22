@@ -8,17 +8,21 @@ class KPolynomialRegression:
         self.k = k
         self.W = None
 
+
     # Given an array of points return two matrix x and y
-    def getXYmatrix(self):
+    def getXYmatrix(self,points=None):
+        if points is None:
+            points = self.points
+
         Xarray = []
-        for (x, y) in self.points:
+        for (x, y) in points:
             temp = []
             for i in range(self.k):
                 temp.append(x ** i)
             Xarray.append(temp)
 
         X = np.matrix(Xarray)
-        Y = np.matrix([[y] for (x, y) in self.points])
+        Y = np.matrix([[y] for (x, y) in points])
 
         return (X, Y)
 
@@ -29,7 +33,11 @@ class KPolynomialRegression:
 
         Xt = np.matrix.transpose(X)
 
-        W = np.linalg.inv(np.dot(Xt, X))
+        try:
+            W = np.linalg.inv(np.dot(Xt, X))
+        except:
+            return False
+
         W = np.dot(W, Xt)
         W = np.dot(W, Y)
 
@@ -37,16 +45,19 @@ class KPolynomialRegression:
 
         return W
 
-    def getMSE(self):
+    def getMSE(self,points=None):
+        if points is None:
+            points = self.points
+
         if self.W is None:
             self.regress()
 
-        (X, Y) = self.getXYmatrix()
+        (X, Y) = self.getXYmatrix(points)
 
         temp = np.dot(X, self.W) - Y
         result = np.dot(np.matrix.transpose(temp), temp)
 
-        return result.item(0) / len(self.points)
+        return result.item(0) / len(points)
 
     # Give equation as a string for a given matrix
     def getEquation(self):
