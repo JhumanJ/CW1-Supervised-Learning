@@ -10,6 +10,9 @@ class KPolynomialRegression:
 
 
     # Given an array of points return two matrix x and y
+    # Supports two type of inputs:
+    # - a list of tuple (when n=1). You can then specify k and matrix will be created accordingly
+    # - a matrix. Then everything but the last item of each row will be in X, and the last item in Y
     def getXYmatrix(self,points=None):
         if points is None:
             points = self.points
@@ -17,7 +20,7 @@ class KPolynomialRegression:
         if all(isinstance(item, tuple) for item in points):
             # Case where dataset is a list of tuple (q1 and 2 mostly)
 
-            if self.k == None:
+            if self.k is None:
                 raise Exception('You must provide a valid k for regression n=1!')
 
             Xarray = []
@@ -43,7 +46,7 @@ class KPolynomialRegression:
 
         return (X, Y)
 
-    # Calculate regression given a k factor
+    # Calculate regression (given a k factor if n = 1, as it will build the x matrix accordingly)
     def regress(self):
 
         (X, Y) = self.getXYmatrix()
@@ -62,6 +65,8 @@ class KPolynomialRegression:
 
         return W
 
+    # Calculate Mse
+    # If no points(dataset) are provider, it uses the one used to build the model
     def getMSE(self,points=None):
         if points is None:
             points = self.points
@@ -76,8 +81,11 @@ class KPolynomialRegression:
 
         return result.item(0) / len(points)
 
-    # Give equation as a string for a given matrix
+    # Give equation as a string for a given matrix (works only for n=1)
     def getEquation(self):
+        if(self.k is None ):
+            raise Exception('Only work for n=1!')
+
         if self.W is None:
             self.regress()
 
