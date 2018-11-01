@@ -36,23 +36,12 @@ def naiveRegressionQ1(kFactor):
     MSEtraining = regressor.getMSE()
 
     # Test set
-    regressor = KPolynomialRegression(testGroup, kFactor)
-    resultsTest = regressor.regress()
-    MSEtest = regressor.getMSE()
-
-
-    # TODO: delete this just checking
-    sum = 0
-    for i in range(len(resultsTraining)):
-        print ("sum (",sum,")+= ",trainingGroup[0][i] ," * ",resultsTraining[i].item(0))
-        sum += trainingGroup[0][i] * resultsTraining[i].item(0)
-
-    print ('\n\nsum:',sum,' vs ', trainingGroup[0][13])
+    MSEtest = regressor.getMSE(testGroup)
 
     return (MSEtraining,MSEtest)
 
 
-#  Do the a 20 times
+#  Do the d) question  20 times
 averageMse = (0,0)
 for i in range (20):
     mses = naiveRegressionQ1(2)
