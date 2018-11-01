@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0be50082-9b8f-4bc3-a05b-019b73559f7e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/lib/kPolynomialRegression.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/kPolynomialRegression.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main3.py" beforeDir="false" afterPath="$PROJECT_DIR$/main3.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,12 +42,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="6762" />
+          <entry key="py" value="6917" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="6762" />
+          <entry key="Python" value="6917" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -58,11 +59,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/kPolynomialRegression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-588">
-              <caret line="18" column="79" selection-start-line="18" selection-start-column="79" selection-end-line="18" selection-end-column="79" />
+            <state relative-caret-position="495">
+              <caret line="33" column="75" selection-start-line="33" selection-start-column="75" selection-end-line="33" selection-end-column="75" />
               <folding>
-                <marker date="1541073952387" expanded="true" signature="117:118" ph="..." />
-                <marker date="1541073952387" expanded="true" signature="1897:1902" ph="..." />
+                <marker date="1541075274035" expanded="true" signature="117:118" ph="..." />
+                <marker date="1541075274035" expanded="true" signature="1974:1979" ph="..." />
               </folding>
             </state>
           </provider>
@@ -71,11 +72,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+            <state relative-caret-position="368">
+              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <marker date="1541075133074" expanded="true" signature="526:528" ph="..." />
+                <marker date="1541075400323" expanded="true" signature="519:962" ph="..." />
+                <marker date="1541075400323" expanded="true" signature="986:988" ph="..." />
               </folding>
             </state>
           </provider>
@@ -374,22 +376,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/kPolynomialRegression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-588">
-          <caret line="18" column="79" selection-start-line="18" selection-start-column="79" selection-end-line="18" selection-end-column="79" />
+        <state relative-caret-position="495">
+          <caret line="33" column="75" selection-start-line="33" selection-start-column="75" selection-end-line="33" selection-end-column="75" />
           <folding>
-            <marker date="1541073952387" expanded="true" signature="117:118" ph="..." />
-            <marker date="1541073952387" expanded="true" signature="1897:1902" ph="..." />
+            <marker date="1541075274035" expanded="true" signature="117:118" ph="..." />
+            <marker date="1541075274035" expanded="true" signature="1974:1979" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+        <state relative-caret-position="368">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <marker date="1541075133074" expanded="true" signature="526:528" ph="..." />
+            <marker date="1541075400323" expanded="true" signature="519:962" ph="..." />
+            <marker date="1541075400323" expanded="true" signature="986:988" ph="..." />
           </folding>
         </state>
       </provider>

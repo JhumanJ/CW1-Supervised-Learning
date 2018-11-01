@@ -15,10 +15,11 @@ class KPolynomialRegression:
             points = self.points
 
         if all(isinstance(item, tuple) for item in points):
+            # Case where dataset is a list of tuple (q1 and 2 mostly)
+
             if self.k == None:
                 raise Exception('You must provide a valid k for regression n=1!')
 
-            # Case where dataset is a list of tuple (q1 and 2 mostly)
             Xarray = []
             for (x, y) in points:
                 temp = []
@@ -30,6 +31,7 @@ class KPolynomialRegression:
             Y = np.matrix([[y] for (x, y) in points])
         else:
             # Case where dataset in a matrix
+            #  In that case the last item of each row is considered to be Y
             Xarray = []
             Yarray = []
             for line in points:
