@@ -14,15 +14,27 @@ class KPolynomialRegression:
         if points is None:
             points = self.points
 
-        Xarray = []
-        for (x, y) in points:
-            temp = []
-            for i in range(self.k):
-                temp.append(x ** i)
-            Xarray.append(temp)
+        if all(isinstance(item, tuple) for item in points):
+            # Case where dataset is a list of tuple (q1 and 2 mostly)
+            Xarray = []
+            for (x, y) in points:
+                temp = []
+                for i in range(self.k):
+                    temp.append(x ** i)
+                Xarray.append(temp)
 
-        X = np.matrix(Xarray)
-        Y = np.matrix([[y] for (x, y) in points])
+            X = np.matrix(Xarray)
+            Y = np.matrix([[y] for (x, y) in points])
+        else:
+            # Case where dataset in a matrix
+            Xarray = []
+            Yarray = []
+            for line in points:
+                Xarray.append(line[:-1])
+                Yarray.append([line[-1]])
+
+            X = np.matrix(Xarray)
+            Y = np.matrix(Yarray)
 
         return (X, Y)
 
