@@ -28,14 +28,35 @@ def naiveRegressionQa():
     onesTraining = np.ones((len(trainingGroup), len(trainingGroup[0])))
     onesTest = np.ones((len(testGroup), len(testGroup[0])))
 
+    # Because our Regression class takes as input a matrix, where the last item of each row is Y
+    # we need to transform these matrix to add Y
+    for i in range(len(onesTraining)):
+        onesTraining[i][13] = trainingGroup[i][13]
+    for i in range(len(onesTest)):
+        onesTest[i][13] = testGroup[i][13]
+
     # Training set
-    regressor = KPolynomialRegression(trainingGroup)
+    regressor = KPolynomialRegression(onesTraining)
+    print (regressor.regress())
     MSEtraining = regressor.getMSE()
 
     # Test set
-    MSEtest = regressor.getMSE(testGroup)
+    MSEtest = regressor.getMSE(onesTest)
 
     return (MSEtraining, MSEtest)
+
+print(naiveRegressionQa())
+
+# ---- Question a ----
+
+# ---- Question b ----
+
+
+# ---- Question c ----
+
+
+# ----- Question d ----
+
 
 def naiveRegressionQd():
 
@@ -53,15 +74,6 @@ def naiveRegressionQd():
     return (MSEtraining,MSEtest)
 
 
-# ---- Question a ----
-
-# ---- Question b ----
-
-
-# ---- Question c ----
-
-
-# ----- Question d ----
 #  Do the d) question  20 times
 averageMse = (0,0)
 for i in range (20):
