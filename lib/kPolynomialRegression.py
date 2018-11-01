@@ -3,7 +3,7 @@ import numpy as np
 # Gives regression method utilities for a given k and set of points
 class KPolynomialRegression:
 
-    def __init__(self,points,k):
+    def __init__(self,points,k=None):
         self.points = points
         self.k = k
         self.W = None
@@ -15,6 +15,9 @@ class KPolynomialRegression:
             points = self.points
 
         if all(isinstance(item, tuple) for item in points):
+            if self.k == None:
+                raise Exception('You must provide a valid k for regression n=1!')
+
             # Case where dataset is a list of tuple (q1 and 2 mostly)
             Xarray = []
             for (x, y) in points:
