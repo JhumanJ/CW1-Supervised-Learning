@@ -18,7 +18,7 @@ def buildGroup(dataset):
 
     return (trainingGroup, testGroup)
 
-# Question 1
+# ----- Question 1 -----
 
 def naiveRegressionQa():
     dataset = loadmat('data/boston.mat')['boston']
@@ -45,38 +45,11 @@ def naiveRegressionQa():
 
     return (MSEtraining, MSEtest)
 
-print(naiveRegressionQa())
-
-# ---- Question a ----
+# print(naiveRegressionQa())
 
 # ---- Question b ----
+#interpretation of Qa
 
-
-# ---- Question c ----
-
-
-# ----- Question d ----
-
-
-def naiveRegressionQd():
-
-    dataset = loadmat('data/boston.mat')['boston']
-
-    (trainingGroup, testGroup) = buildGroup(dataset)
-
-    # Training set
-    regressor = KPolynomialRegression(trainingGroup)
-    MSEtraining = regressor.getMSE()
-
-    # Test set
-    MSEtest = regressor.getMSE(testGroup)
-
-    return (MSEtraining,MSEtest)
-
-
-# ---- Question a ----
-
-# ---- Question b ----
 
 
 # ---- Question c ----
@@ -98,6 +71,7 @@ def findAverageMsesForAttribute(attributeIndex):
         dataset = loadmat('data/boston.mat')['boston']
         (trainingGroup, testGroup) = buildGroup(dataset)
         trainingGroup = buildXYvector(trainingGroup, attributeIndex )
+        print(trainingGroup)
         regressor = KPolynomialRegression(trainingGroup)
         allWTraining.append(regressor.regress())
         allMsesTraining.append(regressor.getMSE())
@@ -116,21 +90,36 @@ def findAverageMsesForAttribute(attributeIndex):
 
     return averageW , averageMseTraining, averageMseTest
 
-
-for i in range(0,13):
-    result = findAverageMsesForAttribute(i)
-    print("Attribute ",i+1,": average W function = ",result[0], ": average MSE training = ",result[1],": average MSE test = ",result[2] )
-
-
-
+def naiveRegressionQc():
+    for i in range(0,13):
+        result = findAverageMsesForAttribute(i)
+        print("Attribute ",i+1,": average W function = ",result[0], ": average MSE training = ",result[1],": average MSE test = ",result[2] )
+# naiveRegressionQc()
 
 # ----- Question d ----
-#  Do the d) question  20 times
-# averageMse = (0,0)
-# for i in range (20):
-#     mses = naiveRegressionQd()
-#     averageMse = (averageMse[0]+mses[0],averageMse[1] + mses[1])
 
-# print (averageMse[0]/20,averageMse[1]/20)
+
+def naiveRegressionQd():
+
+    dataset = loadmat('data/boston.mat')['boston']
+
+    (trainingGroup, testGroup) = buildGroup(dataset)
+
+    # Training set
+    regressor = KPolynomialRegression(trainingGroup)
+    MSEtraining = regressor.getMSE()
+
+    # Test set
+    MSEtest = regressor.getMSE(testGroup)
+
+    return (MSEtraining,MSEtest)
+
+#  Do the d) question  20 times
+averageMse_test = (0,0)
+for i in range (20):
+    mses = naiveRegressionQd()
+    averageMse_test = (averageMse_test[0]+mses[0],averageMse_test[1] + mses[1])
+
+print ("training ", averageMse_test[0]/20," and test ",averageMse_test[1]/20)
 
 
