@@ -94,13 +94,17 @@ def naiveRegressionQa():
         gamma = gamma_init()
         sigma = sigma_init()
 
+        #generate all kernel mattrix for all sigma
+        kernelMattrices = []
+        for s in range(0,len(sigma)):
+                kernelMattrices.append(get_kernel_mattrix(sigma[s], X))
+
         # calculate the alphas for all possible combinations of gamma and sigma
         alphas = []
         for g in range(0,len(gamma)):
             row = []
-            for s in range(0,len(sigma)):
-                kernelMattrix = get_kernel_mattrix(sigma[s], X)
-                row.append(np.linalg.inv(kernelMattrix + gamma[g] * len(X)* np.identity(len(X))) @ Y)
+            for kernel in kernelMattrices:
+                row.append(np.linalg.inv(kernel + gamma[g] * len(X)* np.identity(len(X))) @ Y)
             alphas.append(row)
 
         # calculate the MSE on the testing data of the cross validation group
@@ -132,7 +136,7 @@ def naiveRegressionQa():
     
     average_cross_validation_error = []
 
-    #average over over the cross validations errors and then find min
+    #average over over the cross validations errors 
     for row in range(0,2):
         r = []
         for column in range(0,2):
