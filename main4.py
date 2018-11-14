@@ -196,8 +196,6 @@ def cross_validation(trainingGroup):
     print("gamma : ", gamma[index_min_average_cross_validation_error[0]])
     print("sigma : ", sigma[index_min_average_cross_validation_error[1]])
 
-    print("")
-
     return (gamma[index_min_average_cross_validation_error[0]] , sigma[index_min_average_cross_validation_error[1]])
 
 # Start
@@ -234,7 +232,7 @@ for xi in X:
 SE = [] 
 for x in range(0,len(X)) :
     SE = (Y[x] - y_estimated[x]) ** 2
-all_MSEs_training.append(np.mean(SE))
+# print("The answer to c is",np.mean(SE), " standard deviation is ",np.mean(SE) )
 
 #Get MSE for this alpha on test
 y_test_estimated = []
@@ -247,7 +245,7 @@ for x_test in X_test:
 SE_test = [] 
 for x in range(0,len(X_test)) :
     SE_test = (Y_test[x] - y_test_estimated[x]) ** 2
-print("The answer to c is",np.mean(SE_test), " standard deviation is ",np.std(SE_test) )
+# print("The answer to c is",np.mean(SE_test), " standard deviation is ",np.mean(SE_test) )
 
 
 all_MSEs_training = []
@@ -302,8 +300,8 @@ for i in range(0,20):
         SE_test = (Y_test[x] - y_test_estimated[x]) ** 2
     all_MSEs_test.append(np.mean(SE_test))
 
-print("Average MSE on training is: ",np.mean(all_MSEs_training), " and the standard is ", np.std(all_MSEs_test))
-print("Average MSE on test is: ",np.mean(all_MSEs_test), " and the standard deviation is ", np.std(all_MSEs_test))
+# print("Average MSE on training is: ",np.mean(all_MSEs_training), " and the standard is ", np.std(all_MSEs_test))
+# print("Average MSE on test is: ",np.mean(all_MSEs_test), " and the standard deviation is ", np.std(all_MSEs_test))
     
 
     
