@@ -40,8 +40,8 @@ def solveExercice2(kFactor):
         y = float((math.sin(kFactor*math.pi*x))**2) + np.random.normal(0,0.07)
         points.append((x,y))
         plt.plot([x], [y], marker='o', markersize=3, color="blue")
-    plt.show()
-    plt.close()
+    # plt.show()
+    # plt.close()
 
     # --------- question a.ii --------
 
@@ -63,8 +63,8 @@ def solveExercice2(kFactor):
     # Plot points over regressions
     for (x,y) in points:
         plt.plot([x], [y], marker='o', markersize=3, color="blue")
-    plt.show()
-    plt.close()
+    # plt.show()
+    # plt.close()
 
     # ------- question b -------
 
@@ -75,8 +75,8 @@ def solveExercice2(kFactor):
         x = k
         y = math.log10(regressor.getMSE())
         plt.plot(x,y,marker='o', markersize=3, color="blue")
-    plt.show()
-    plt.close()
+    # plt.show()
+    # plt.close()
 
     # ------- question c -------
 

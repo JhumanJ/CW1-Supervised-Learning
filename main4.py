@@ -196,6 +196,8 @@ def cross_validation(trainingGroup):
     print("gamma : ", gamma[index_min_average_cross_validation_error[0]])
     print("sigma : ", sigma[index_min_average_cross_validation_error[1]])
 
+    print("")
+
     return (gamma[index_min_average_cross_validation_error[0]] , sigma[index_min_average_cross_validation_error[1]])
 
 # Start
@@ -203,9 +205,55 @@ dataset = loadmat('data/boston.mat')['boston']
 (trainingGroup, testGroup) = buildGroup(3, dataset)
 (best_gamma, best_sigma) = cross_validation(trainingGroup)
 
+# ===================QUESTION C============================
+
+X = []
+Y = []
+
+for x in trainingGroup:
+    X.append(x[0:13])
+    Y.append(x[13])
+
+X_test = []
+Y_test = []
+
+for x in testGroup:
+    X_test.append(x[0:13])
+    Y_test.append(x[13])
+
+alpha = np.linalg.inv(get_kernel_mattrix(best_sigma, X) + best_gamma * len(X)* np.identity(len(X))) @ Y
+    
+#Get MSE for this alpha on training
+y_estimated = []
+for xi in X:
+    sum = 0
+    for i,xj in enumerate(X):
+        sum = sum + alpha[i] * gaussianKernel(xj, xi, best_sigma)
+    y_estimated.append(sum)
+
+SE = [] 
+for x in range(0,len(X)) :
+    SE = (Y[x] - y_estimated[x]) ** 2
+all_MSEs_training.append(np.mean(SE))
+
+#Get MSE for this alpha on test
+y_test_estimated = []
+for x_test in X_test:
+    sum = 0
+    for i,x in enumerate(X):
+        sum = sum + alpha[i] * gaussianKernel(x, x_test, best_sigma)
+    y_test_estimated.append(sum)
+
+SE_test = [] 
+for x in range(0,len(X_test)) :
+    SE_test = (Y_test[x] - y_test_estimated[x]) ** 2
+print("The answer to c is",np.mean(SE_test), " standard deviation is ",np.std(SE_test) )
+
+
 all_MSEs_training = []
 all_MSEs_test = []
 
+# ===================QUESTION D============================
 
 # do the ridge regression from best_gamma and best_sigma 20 times
 for i in range(0,20):
