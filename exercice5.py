@@ -94,7 +94,7 @@ def cross_validation(trainingGroup):
     cross_validation_errors = []
 
     for index,test_group_validation in enumerate(cross_validation_groups):
-        
+        print("cross validation ", index, "start")
         training_group_validation = []
         for i,group in enumerate(cross_validation_groups):
             if not i == index:
@@ -174,7 +174,6 @@ def cross_validation(trainingGroup):
             averages_row.append(np.mean(every_mse_per_alpha))
         average_cross_validation_error.append(averages_row)
     
-
     # plot the means over folds of validation error as function gamma and sigma
     plot_mean_validation_error(average_cross_validation_error)
                 
@@ -187,23 +186,30 @@ def cross_validation(trainingGroup):
                 min_average_cross_validation_error = column
                 index_min_average_cross_validation_error = (average_cross_validation_error.index(row), row.index(column))    
 
-    print("min error",min_average_cross_validation_error)
-    # print(index_min_average_cross_validation_error)
+
 
     gamma = gamma_init()
     sigma = sigma_init()
 
-    print("gamma : ", gamma[index_min_average_cross_validation_error[0]])
-    print("sigma : ", sigma[index_min_average_cross_validation_error[1]])
+    # print("gamma : ", gamma[index_min_average_cross_validation_error[0]])
+    # print("sigma : ", sigma[index_min_average_cross_validation_error[1]])
+
+    print("cross validation sucess")
 
     return (gamma[index_min_average_cross_validation_error[0]] , sigma[index_min_average_cross_validation_error[1]])
 
 # Start
 dataset = loadmat('data/boston.mat')['boston']
 (trainingGroup, testGroup) = buildGroup(3, dataset)
+
+print("Debug mode: uncomment all the relevant print to get the values")
+
+# ===================QUESTION A and B============================
+print("Starting cross validation")
 (best_gamma, best_sigma) = cross_validation(trainingGroup)
 
 # ===================QUESTION C============================
+print("Starting question c")
 
 X = []
 Y = []
@@ -252,6 +258,7 @@ all_MSEs_training = []
 all_MSEs_test = []
 
 # ===================QUESTION D============================
+print("run over 20 iterations")
 
 # do the ridge regression from best_gamma and best_sigma 20 times
 for i in range(0,20):
@@ -303,7 +310,7 @@ for i in range(0,20):
 # print("Average MSE on training is: ",np.mean(all_MSEs_training), " and the standard is ", np.std(all_MSEs_test))
 # print("Average MSE on test is: ",np.mean(all_MSEs_test), " and the standard deviation is ", np.std(all_MSEs_test))
     
-
+print("Done and ran sucessfully")
     
     
 
